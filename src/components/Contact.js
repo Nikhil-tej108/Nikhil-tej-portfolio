@@ -115,6 +115,42 @@ const ContactIcon = styled.div`
   }
 `;
 
+const GitHubIcon = styled.img`
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+  filter: brightness(0) saturate(100%) invert(67%) sepia(51%) saturate(2878%) hue-rotate(199deg) brightness(101%) contrast(101%);
+  
+  ${ContactCard}:hover & {
+    transform: scale(1.1);
+  }
+`;
+
+const SocialIcon = styled.img`
+  width: 1.2rem;
+  height: 1.2rem;
+  filter: brightness(0) saturate(100%) invert(67%) sepia(51%) saturate(2878%) hue-rotate(199deg) brightness(101%) contrast(101%);
+`;
+
+const LinkedInIcon = styled.img`
+  width: 1.2rem;
+  height: 1.2rem;
+  filter: brightness(0) saturate(100%) invert(67%) sepia(51%) saturate(2878%) hue-rotate(199deg) brightness(101%) contrast(101%);
+`;
+
+const LeetCodeIcon = styled.img`
+  width: 1.2rem;
+  height: 1.2rem;
+  filter: brightness(0) saturate(100%) invert(67%) sepia(51%) saturate(2878%) hue-rotate(199deg) brightness(101%) contrast(101%);
+`;
+
+const EmailIcon = styled.img`
+  width: 1.2rem;
+  height: 1.2rem;
+  filter: brightness(0) saturate(100%) invert(67%) sepia(51%) saturate(2878%) hue-rotate(199deg) brightness(101%) contrast(101%);
+`;
+
 const ContactTitle = styled.h3`
   color: #60a5fa;
   font-size: 1.3rem;
@@ -297,7 +333,10 @@ const Contact = () => (
           target="_blank" 
           rel="noopener noreferrer"
         >
-          <span>🔗</span>
+          <LinkedInIcon 
+            src="https://www.bing.com/th/id/OIP.ex75g4-5QfD5ES2M34-MnwHaHa?w=199&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" 
+            alt="LinkedIn"
+          />
           LinkedIn
         </SocialButton>
         
@@ -306,12 +345,18 @@ const Contact = () => (
           target="_blank" 
           rel="noopener noreferrer"
         >
-          <span>🏆</span>
+          <LeetCodeIcon 
+            src="https://www.bing.com/th/id/OIP.ex75g4-5QfD5ES2M34-MnwHaHa?w=199&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" 
+            alt="LeetCode"
+          />
           LeetCode
         </SocialButton>
         
         <SocialButton href="mailto:nikhiltej99@gmail.com">
-          <span>📧</span>
+          <EmailIcon 
+            src="https://www.bing.com/th/id/OIP.ex75g4-5QfD5ES2M34-MnwHaHa?w=199&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2" 
+            alt="Email"
+          />
           Email
         </SocialButton>
       </SocialGrid>

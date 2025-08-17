@@ -17,6 +17,7 @@ const AboutSection = styled.section`
   margin: 0 auto;
   padding: 6rem 2rem;
   position: relative;
+  background: transparent;
   
   &::before {
     content: '';

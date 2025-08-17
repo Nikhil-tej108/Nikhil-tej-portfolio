@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+    background: #000000;
     color: #f4f4f5;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
     margin: 0;
@@ -20,6 +20,157 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Animated background with moving dots */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(2px 2px at 20px 30px, #ffffff, transparent),
+                radial-gradient(2px 2px at 40px 70px, #ffffff, transparent),
+                radial-gradient(1px 1px at 90px 40px, #ffffff, transparent),
+                radial-gradient(1px 1px at 130px 80px, #ffffff, transparent),
+                radial-gradient(2px 2px at 160px 30px, #ffffff, transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: moveStars 20s linear infinite;
+    z-index: -1;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(1px 1px at 50px 50px, #ffffff, transparent),
+                radial-gradient(1px 1px at 100px 100px, #ffffff, transparent),
+                radial-gradient(1px 1px at 150px 150px, #ffffff, transparent),
+                radial-gradient(1px 1px at 200px 200px, #ffffff, transparent),
+                radial-gradient(1px 1px at 250px 250px, #ffffff, transparent);
+    background-repeat: repeat;
+    background-size: 300px 300px;
+    animation: moveStars 15s linear infinite reverse;
+    z-index: -1;
+  }
+
+  @keyframes moveStars {
+    0% {
+      transform: translateZ(0) scale(1);
+      opacity: 0.8;
+    }
+    50% {
+      transform: translateZ(100px) scale(1.5);
+      opacity: 1;
+    }
+    100% {
+      transform: translateZ(200px) scale(2);
+      opacity: 0.6;
+    }
+  }
+
+  /* Additional floating particles */
+  .space-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #ffffff;
+    border-radius: 50%;
+    animation: floatParticle 8s linear infinite;
+  }
+
+  .particle:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+    animation-duration: 6s;
+  }
+
+  .particle:nth-child(2) {
+    left: 20%;
+    animation-delay: 1s;
+    animation-duration: 8s;
+  }
+
+  .particle:nth-child(3) {
+    left: 30%;
+    animation-delay: 2s;
+    animation-duration: 7s;
+  }
+
+  .particle:nth-child(4) {
+    left: 40%;
+    animation-delay: 3s;
+    animation-duration: 9s;
+  }
+
+  .particle:nth-child(5) {
+    left: 50%;
+    animation-delay: 4s;
+    animation-duration: 6s;
+  }
+
+  .particle:nth-child(6) {
+    left: 60%;
+    animation-delay: 5s;
+    animation-duration: 8s;
+  }
+
+  .particle:nth-child(7) {
+    left: 70%;
+    animation-delay: 6s;
+    animation-duration: 7s;
+  }
+
+  .particle:nth-child(8) {
+    left: 80%;
+    animation-delay: 7s;
+    animation-duration: 9s;
+  }
+
+  .particle:nth-child(9) {
+    left: 90%;
+    animation-delay: 8s;
+    animation-duration: 6s;
+  }
+
+  .particle:nth-child(10) {
+    left: 95%;
+    animation-delay: 9s;
+    animation-duration: 8s;
+  }
+
+  @keyframes floatParticle {
+    0% {
+      transform: translateY(100vh) translateZ(0) scale(0.5);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100px) translateZ(200px) scale(2);
+      opacity: 0;
+    }
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -69,7 +220,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   ::-webkit-scrollbar-track {
-    background: #1a1a2e;
+    background: #1a1a1a;
   }
 
   ::-webkit-scrollbar-thumb {

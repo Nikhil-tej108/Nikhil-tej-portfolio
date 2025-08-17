@@ -199,11 +199,11 @@ const Skills = () => {
   const [activeCategory, setActiveCategory] = useState('all');
 
   const skillCategories = {
-    'Programming Languages': ['Python', 'JavaScript', 'Kotlin', 'HTML', 'CSS'],
-    'AI & Machine Learning': ['AI/ML', 'Natural Language Processing', 'Data Analysis', 'scikit-learn'],
-    'Web Technologies': ['HTML', 'CSS', 'JavaScript', 'React'],
-    'Mobile Development': ['Kotlin', 'Android', 'UI/UX'],
-    'Tools & Others': ['Git', 'GitHub', 'Algorithms', 'Operating Systems']
+    'Programming Languages': ['Python', 'JavaScript','C','C++','JavaScript'],
+    // 'AI & Machine Learning': ['AI/ML', 'Natural Language Processing', 'Data Analysis', 'scikit-learn'],
+    'Web Technologies': ['HTML', 'CSS', 'JavaScript', 'React','MySql'],
+    'Frameworks & Libraries': ['React','Numpy','Pandas','matplotlib','Flask'],
+    'Tools & Platforms': ['GitHub','VS Code','Figma','Uipath','Autocad']
   };
 
   const skillProgress = {

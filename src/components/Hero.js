@@ -40,8 +40,67 @@ const HeroContainer = styled.section`
   padding: 0 2rem;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+  background: transparent;
+  padding-top: 80px; /* Add padding to account for fixed navigation */
+`;
 
+const HeroContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  width: 100%;
+  max-width: 1200px;
+`;
+
+const TopSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+`;
+
+const ProfileSection = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.08) 0%, rgba(147, 197, 253, 0.03) 100%);
+  border: 1px solid rgba(96, 165, 250, 0.15);
+  border-radius: 24px;
+  backdrop-filter: blur(20px);
+  max-width: 800px;
+  width: 100%;
+  transition: all 0.3s ease;
+  margin-bottom: 2rem;
+  
+  &:hover {
+    transform: translateY(-5px);
+    border-color: rgba(96, 165, 250, 0.3);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  }
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1.5rem;
+  }
+`;
+
+const ProfileImage = styled.div`
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.2) 0%, rgba(147, 197, 253, 0.1) 100%);
+  border: 3px solid rgba(96, 165, 250, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: #60a5fa;
+  position: relative;
+  overflow: hidden;
+  
   &::before {
     content: '';
     position: absolute;
@@ -49,12 +108,97 @@ const HeroContainer = styled.section`
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
-      radial-gradient(circle at 20% 80%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba(147, 197, 253, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
-    pointer-events: none;
+    background: linear-gradient(45deg, transparent 30%, rgba(96, 165, 250, 0.1) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
   }
+  
+  &:hover::before {
+    transform: translateX(100%);
+  }
+  
+  @media (max-width: 768px) {
+    width: 120px;
+    height: 120px;
+    font-size: 2.5rem;
+  }
+`;
+
+const ProfileInfo = styled.div`
+  text-align: left;
+  flex: 1;
+  
+  @media (max-width: 768px) {
+    text-align: center;
+  }
+`;
+
+const ProfileTitle = styled.h3`
+  color: #60a5fa;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+  }
+`;
+
+const ProfileText = styled.p`
+  color: #d1d5db;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+`;
+
+const ProfileHighlights = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+`;
+
+const HighlightTag = styled.span`
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.15) 0%, rgba(147, 197, 253, 0.08) 100%);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  color: #60a5fa;
+  padding: 0.4rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.25) 0%, rgba(147, 197, 253, 0.15) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(96, 165, 250, 0.3);
+  }
+`;
+
+const SpaceParticles = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+`;
+
+const Particle = styled.div`
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #ffffff;
+  border-radius: 50%;
+  animation: floatParticle 8s linear infinite;
+  left: ${props => props.left}%;
+  animation-delay: ${props => props.delay}s;
+  animation-duration: ${props => props.duration}s;
 `;
 
 const Content = styled.div`
@@ -122,6 +266,8 @@ const CTAButton = styled.button`
   box-shadow: 0 10px 30px rgba(96, 165, 250, 0.3);
   position: relative;
   overflow: hidden;
+  margin-top: 1rem;
+  margin-bottom: 5rem;
 
   &::before {
     content: '';
@@ -146,11 +292,12 @@ const CTAButton = styled.button`
 
 const ScrollIndicator = styled.div`
   position: absolute;
-  bottom: 2rem;
+  bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
   animation: ${float} 2s ease-in-out infinite;
   cursor: pointer;
+  z-index: 1;
   
   &::before {
     content: '↓';
@@ -160,28 +307,16 @@ const ScrollIndicator = styled.div`
   }
 `;
 
-const Particle = styled.div`
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: #60a5fa;
-  border-radius: 50%;
-  opacity: 0.6;
-  animation: ${float} ${props => props.duration || 3}s ease-in-out infinite;
-  animation-delay: ${props => props.delay || 0}s;
-`;
-
 const Hero = () => {
   const [particles, setParticles] = useState([]);
 
   useEffect(() => {
-    const particleCount = 20;
+    const particleCount = 15;
     const newParticles = Array.from({ length: particleCount }, (_, i) => ({
       id: i,
       left: Math.random() * 100,
-      top: Math.random() * 100,
-      duration: 2 + Math.random() * 4,
-      delay: Math.random() * 2,
+      delay: Math.random() * 10,
+      duration: 6 + Math.random() * 4,
     }));
     setParticles(newParticles);
   }, []);
@@ -194,30 +329,51 @@ const Hero = () => {
   };
 
   return (
-    <HeroContainer>
-      {particles.map(particle => (
-        <Particle
-          key={particle.id}
-          style={{
-            left: `${particle.left}%`,
-            top: `${particle.top}%`,
-          }}
-          duration={particle.duration}
-          delay={particle.delay}
-        />
-      ))}
+    <HeroContainer id="home">
+      <SpaceParticles>
+        {particles.map(particle => (
+          <Particle
+            key={particle.id}
+            left={particle.left}
+            delay={particle.delay}
+            duration={particle.duration}
+          />
+        ))}
+      </SpaceParticles>
       
-      <Content>
-        <Greeting>Hello, I'm</Greeting>
-        <Name>Nikhil Tej</Name>
-        <SubTitle>AI & ML Engineer • Full Stack Developer • Problem Solver</SubTitle>
-        <Tagline>
-          Turning sci-fi ideas into real-world solutions — it's for real, believe me :)
-        </Tagline>
+      <HeroContent>
+        <TopSection>
+          <Greeting>Hello, I'm</Greeting>
+          <Name>Nikhil Tej</Name>
+          <Tagline>
+            Turning sci-fi ideas into real-world solutions — it's for real, believe me :)
+          </Tagline>
+        </TopSection>
+
+        <ProfileSection>
+          <ProfileImage>
+            <span>NT</span>
+          </ProfileImage>
+          <ProfileInfo>
+            <ProfileTitle>About Me</ProfileTitle>
+            <ProfileText>
+              I'm pursuing B.E in Artificial Intelligence and Machine Learning at Dayananda Sagar College of Engineering.
+              My passion lies in backend development, AI/ML, and creating innovative solutions.
+              I'm dedicated to building robust and scalable systems.
+            </ProfileText>
+            <ProfileHighlights>
+              <HighlightTag>Backend Development</HighlightTag>
+              <HighlightTag>AI/ML</HighlightTag>
+              <HighlightTag>Problem Solving</HighlightTag>
+              <HighlightTag>Full Stack</HighlightTag>
+            </ProfileHighlights>
+          </ProfileInfo>
+        </ProfileSection>
+
         <CTAButton onClick={scrollToAbout}>
           Explore My Work
         </CTAButton>
-      </Content>
+      </HeroContent>
       
       <ScrollIndicator onClick={scrollToAbout} />
     </HeroContainer>
