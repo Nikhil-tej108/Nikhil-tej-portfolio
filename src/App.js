@@ -7,17 +7,26 @@ import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+
 function App() {
   return (
-    <>
+    <Router>
       <GlobalStyle />
       <Navigation />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
-    </>
+      <Routes>
+        <Route path="/" element={
+          <>
+            <Hero />
+            <About />
+            <Skills />
+            <Projects />
+            <Contact />
+          </>
+        } />
+        {/* Add more routes here if needed */}
+      </Routes>
+    </Router>
   );
 }
 
