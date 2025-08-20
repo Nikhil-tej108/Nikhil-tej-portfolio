@@ -161,24 +161,6 @@ const About = () => (
           I'm actively learning AI/ML, building modern web applications, and contributing to open-source projects.
         </Description>
         
-        {/* <StatsGrid>
-          <StatCard>
-            <StatNumber>7</StatNumber>
-            <StatLabel>Repositories</StatLabel>
-          </StatCard>
-          <StatCard>
-            <StatNumber>6</StatNumber>
-            <StatLabel>Stars Earned</StatLabel>
-          </StatCard>
-          <StatCard>
-            <StatNumber>3</StatNumber>
-            <StatLabel>Following</StatLabel>
-          </StatCard>
-          <StatCard>
-            <StatNumber>2</StatNumber>
-            <StatLabel>Followers</StatLabel>
-          </StatCard>
-        </StatsGrid> */}
       </Content>
       
       <InfoCards>
