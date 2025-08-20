@@ -2,6 +2,7 @@
   "name": "nikhil-tej-portfolio",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://nikhil-tej108.github.io/Nikhil-tej-portfolio",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
